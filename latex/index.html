@@ -87,10 +87,12 @@ text
 ```LaTeX
 \section*{Erstes Kapitel}
 ...
-\subsection*{Erstes Unterkapitel}
-...
-\subsection*{Zweites Unterkapitel}
-...
+  \subsection*{Erstes Unterkapitel}
+  ...
+
+  \subsection*{Zweites Unterkapitel}
+  ...
+
 \section*{Zweites Kapitel}
 ...
 ```
@@ -99,11 +101,13 @@ text
 
 ```LaTeX
 \begin{itemize}
-\item Standard-Aufzaehlungszeichen
-\begin{itemize}
-\item geschachtelte Aufzaehlung
-\end{itemize}
-\item[b)] Benutzerdefiniertes Aufzaehlungszeichen
+  \item Standard-Aufzaehlungszeichen
+
+  \begin{itemize}
+    \item geschachtelte Aufzaehlung
+  \end{itemize}
+
+  \item[b)] Benutzerdefiniertes Aufzaehlungszeichen
 \end{itemize}
 ```
 </script></section><section data-markdown><script type="text/template">
@@ -111,10 +115,10 @@ text
 
 ```LaTeX
 \begin{tabular}{<spalten>}
-<zelle11> & <zelle12> & ... \\
-<zelle21> & <zelle22> & ... \\
-<zelle31> & <zelle32> & ... \\
-...
+  <zelle11> & <zelle12> & ... \\
+  <zelle21> & <zelle22> & ... \\
+  <zelle31> & <zelle32> & ... \\
+  ...
 \end{tabular}
 ```
 </script></section><section data-markdown><script type="text/template">
@@ -122,14 +126,22 @@ text
 
 ```LaTeX
 \begin{tabular}{cc|c}
-x & y & $x \cdot y$ \\
-\hline \hline
-0 & 0 & 0 \\
-0 & 1 & 0 \\
-1 & 0 & 0 \\
-1 & 1 & 1 \\
+  x & y & $x \cdot y$ \\
+  \hline \hline
+  0 & 0 & 0 \\
+  0 & 1 & 0 \\
+  1 & 0 & 0 \\
+  1 & 1 & 1 \\
 \end{tabular}
-```</script></section><section data-markdown><script type="text/template">
+```
+
+x | y | | $x \cdot y$
+---|---| |---
+0 | 0 | | 0
+...|||
+
+
+</script></section><section data-markdown><script type="text/template">
 ### Formelmodus
 
 - Eine Formel muss innerhalb eines LaTeX-Dokuments in `$` eingeschlossen sein. Beispiel:
@@ -142,23 +154,40 @@ $ a+b=c $
 </script></section><section data-markdown><script type="text/template">
 ### Hoch- / Tiefstellung
 
-- Beispiel
-
 ```LaTeX
 $x^2 - x_i$
-$10^{10^{100}}$
-$n!=\prod_{i=1}^n i$
-$n!=\prod\limits_{i=1}^n i$
 ```
+$x^2 - x_i$
+
+```LaTeX
+$10^{10^{100}}$
+```
+$10^{10^{100}}$
+
+```LaTeX
+$n!=\prod_{i=1}^n i$
+```
+$n!=\prod_{i=1}^n i$
+
 </script></section><section data-markdown><script type="text/template">
 ### Wurzeln und Brüche
 
+
 ```LaTeX
 $\sqrt{x}$
-$\sqrt[3]{x}$
+```
+$\sqrt{x}$
+
+```LaTeX
 $\frac{x-y}{x+y}$
+```
+$\frac{x-y}{x+y}$
+
+```LaTeX
 $\left({a \atop {b+1}}\right)$
 ```
+$\left({a \atop {b+1}}\right)$
+
 </script></section><section data-markdown><script type="text/template">
 ### Grafik Einbindung
 
@@ -185,20 +214,20 @@ $\left({a \atop {b+1}}\right)$
 </script></section><section data-markdown><script type="text/template">
 ### Editoren
 
-- Texmaker, Texstudio
-- Atom
+- Spezifisch: [Texmaker](http://www.xm1math.net/texmaker/), [Texstudio](http://www.texstudio.org/)
+- Generell: [Atom](https://atom.io/)
 - macOS: Texpad (nicht kostenlos, aber sehr komfortabel)
 </script></section><section data-markdown><script type="text/template">
 ### Services
 
 - [Sharelatex](https://www.sharelatex.com)
-- [Detextify](http://detexify.kirelabs.org/classify.html)
+- [Detexify](http://detexify.kirelabs.org/classify.html)
 - [Tables Generator](http://www.tablesgenerator.com/#)
 - [List of Matematical Symbols](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
 </script></section><section data-markdown><script type="text/template">
 ### Template
 
-Es gibt [im ILIAS unter Zusatzmaterial](https://ilias.uni-freiburg.de/ilias.php?ref_id=667237&cmd=view&cmdClass=ilrepositorygui&cmdNode=rn&baseClass=ilRepositoryGUI) ein eine Template, was ihr als Basis für euere Abgaben verwenden könnt.
+[Im ILIAS unter Zusatzmaterial](https://ilias.uni-freiburg.de/ilias.php?ref_id=667237&cmd=view&cmdClass=ilrepositorygui&cmdNode=rn&baseClass=ilRepositoryGUI) gibt es ein Template, welches als Basis für Übungsabgaben verwendet werden kann.
 </script></section></section></div>
         </div>
 
