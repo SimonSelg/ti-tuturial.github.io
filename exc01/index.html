@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>reveal-md</title>
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css" id="theme">
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+          document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template"># Übungsblatt 1
+
+<small>by Simon Selg, Danny Stoll</small>
+</script></section><section  data-markdown><script type="text/template">
+## Gliederung
+
+- [Organisatorisches](/exc01.md#/2)
+- [Allgemeines](/exc01.md#/3)
+- Aufgaben
+  - [Aufgabe 1](/exc01.md#/4)
+  - [Aufgabe 2](/exc01.md#/5)
+  - [Aufgabe 3](/exc01.md#/6)
+  - [Aufgabe 4](/exc01.md#/7)
+- [Blatt 2](/exc01.md#/8)
+</script></section><section ><section data-markdown><script type="text/template">
+## Organisatorisches
+</script></section><section data-markdown><script type="text/template">
+### Anwesenheit
+
+<img src="./images/participate.jpg" style="width: 60%;"/>
+</script></section><section data-markdown><script type="text/template">
+### Plagiate
+
+<img src="./images/copypaste.jpg" style="width: 60%;"/>
+</script></section><section data-markdown><script type="text/template">
+### Englische Klausur
+
+<img src="./images/doge.jpg" style="width: 30%;"/>
+</script></section><section data-markdown><script type="text/template">
+### Namen auf Abgaben
+
+- Probleme nach Tutorat klären
+</script></section><section data-markdown><script type="text/template">
+### Korrektur Fehler
+
+- Nach dem Tutorat
+- Fachliche Unklarheiten sofort!
+
+</script></section></section><section ><section data-markdown><script type="text/template">
+## Allgemeines
+</script></section><section data-markdown><script type="text/template">
+### Blatt 1 Statistiken
+
+- $\varnothing_{Punkte} \approx 11.2$
+- $\sigma_{Punkte} \approx 3.8$
+</script></section><section data-markdown><script type="text/template">
+### Klausur Relevanz
+
+- Tutorats exlusive
+</script></section><section data-markdown><script type="text/template">
+### Erste Aufgabe
+
+- [Aufgabe 1](/exc01.md#/4)
+- [Aufgabe 2](/exc01.md#/5)
+- [Aufgabe 3](/exc01.md#/6)
+- [Aufgabe 4](/exc01.md#/7)
+- [Blatt 2](/exc01.md#/8)
+</script></section></section><section ><section data-markdown><script type="text/template">
+## Aufgabe 1
+
+<img src="./images/frog.jpg" style="width: 38%;"/>
+</script></section><section data-markdown><script type="text/template">
+### Induktionsbeweis
+
+- <font color="#ff4500">$\mathrm{Z\kern-.3em\raise-0.5ex\hbox{Z}}$:</font> Aussage A
+- <font color="#ff4500">IA:</font> $n=\lambda:$ A gilt.
+- <font color="#ff4500">IV:</font> A gelte für ein $n$
+- <font color="#ff4500">IS:</font> $n \rightarrow n+1$
+</script></section><section data-markdown><script type="text/template">
+
+### Zu zeigen
+$\forall a, b \in \mathbb{N}^+:\space P(a, b) = a \cdot b$
+
+</script></section><section data-markdown><script type="text/template">
+### Es gilt
+$$P(a,b) =
+\left\\{
+	\begin{array}{ll}
+		P(2 \cdot a, \lfloor b/2) \rfloor)  & b > 1 \mbox{ und } b \mbox{ ist gerade} \\\\
+		P(2 \cdot a, \lfloor b/2) \rfloor) + a & b > 1 \mbox{ und } b \mbox{ ist ungerade} \\\\
+    a & b = 1
+	\end{array}
+\right.$$
+</script></section><section data-markdown><script type="text/template">
+### Vorüberlegung
+
+$$
+\begin{align}
+  &n = \lfloor \log_2(b + 1) \rfloor \\\\
+  \Rightarrow & 2^{n-1} \leq b < 2^n \\\\
+\end{align}
+$$
+
+</script></section><section data-markdown><script type="text/template">
+### Induktionsanfang
+
+<div align="left">Sei $n=1:$</div>
+
+$$
+\begin{align}
+  &(1 \leq b < 2) \Rightarrow b = 1 \\\\
+  \mbox{Also: } \ &P(a, b) \stackrel{(Def)}{=} a \stackrel{!}{=} a \cdot b \\\\
+\end{align}
+$$
+</script></section><section data-markdown><script type="text/template">
+### Induktionsvorraussetzung
+
+<div align="left">Für ein beliebiges $n \in \mathbb{N}$ gelte:</div>
+
+$\forall a,b \in \mathbb{N}^+:$ $P(a, b) = a \cdot b$
+</script></section><section data-markdown><script type="text/template">
+### Induktionsschritt
+
+- Fall 1: $b$ ist gerade
+- Fall 2: $b$ ist ungerade
+</script></section><section data-markdown><script type="text/template">
+### Fall 1: $b$ gerade
+
+$$
+\begin{align}
+    P(a,b) &= P(2 \cdot a, \lfloor \frac{b}{2} \rfloor) \\\\
+    &\stackrel{IV}{=} (2 \cdot a) \cdot \lfloor \frac{b}{2} \rfloor  \\\\
+    &= a \cdot b
+\end{align}
+$$
+</script></section><section data-markdown><script type="text/template">
+### Fall 2: $b$ ungerade
+
+$$
+\begin{align}
+    P(a,b) &= P(2 \cdot a, \lfloor \frac{b}{2} \rfloor) \\\\
+    &\stackrel{IV}{=} (2 \cdot a) \cdot \lfloor \frac{b}{2} \rfloor + a  \\\\
+    &= a \cdot (b - 1) + a  \\\\
+    &= a \cdot b
+\end{align}
+$$
+<div align="right">$\square$</div>
+
+</script></section><section data-markdown><script type="text/template">
+### Der Gag: Binäre Multiplikation
+
+a | b
+--- | ---
+0000 0111 | 0001 001<font color="##00FF00">1</font>
+0000 1110 | 0000 100<font color="##00FF00">1</font>
+~~0001 1100~~ | 0000 010<font color="##FF0000">0</font>
+~~0011 1000~~ | 0000 001<font color="##FF0000">0</font>
+0111 0000 | 0000 000<font color="##00FF00">1</font>
+|
+0100 0101 |
+</script></section><section data-markdown><script type="text/template">
+### Häufige Fehler
+
+- Tutorats exclusive
+
+<aside class="notes" data-markdown></aside></script></section><section data-markdown><script type="text/template">
+### Nächste Aufabe
+
+- [Aufgabe 2](/exc01.md#/5)
+- [Aufgabe 3](/exc01.md#/6)
+- [Aufgabe 4](/exc01.md#/7)
+- [Blatt 2](/exc01.md#/8)
+
+</script></section></section><section ><section data-markdown><script type="text/template">
+## Aufgabe 2
+</script></section><section data-markdown><script type="text/template">
+### Aufgabenstellung
+
+- $A := \\{1, 2, 3\\}$ und $B := \\{a, b, c\\}$
+
+$
+a) \ A \cap B \\\\
+b) \ A^3 \\\\
+c) \ B \mbox{ \ } (A \cap B) \\\\
+d) \ Pot(B) \mbox{ \ } {B} \\\\
+$</script></section><section data-markdown><script type="text/template">
+### $a) \ A \cap B$
+
+- {}
+- $\emptyset$
+</script></section><section data-markdown><script type="text/template">
+### $b) \ A^3$
+
+- {$(1, 1, 1), \ (1, 1, 2), \ ..., \ (3, 3, 3)$}
+- {$(a, b, c) \ | \ a, b, c \in A$}
+</script></section><section data-markdown><script type="text/template">
+### $c) \ B$ \ $(A \cap B)$
+
+- {}
+- $\emptyset$
+</script></section><section data-markdown><script type="text/template">
+### $d) \ Pot(B)$ \ {$B$}
+
+- {<font color="#ff4500">{</font><font color="#ff4500">}</font>, <font color="#ff4500">{</font>a<font color="#ff4500">}</font>, <font color="#ff4500">{</font>b<font color="#ff4500">}</font>, <font color="#ff4500">{</font>c<font color="#ff4500">}</font>, <font color="#ff4500">{</font>a<font color="##00FF00">,</font> b<font color="#ff4500">}</font>, <font color="#ff4500">{</font>a<font color="##00FF00">,</font>c<font color="#ff4500">}</font>, <font color="#ff4500">{</font>b<font color="##00FF00">,</font> c<font color="#ff4500">}</font>}
+</script></section><section data-markdown><script type="text/template">
+### Nächste Aufabe
+
+- [Aufgabe 1](/exc01.md#/4)
+- [Aufgabe 3](/exc01.md#/6)
+- [Aufgabe 4](/exc01.md#/7)
+- [Blatt 2](/exc01.md#/8)
+</script></section></section><section ><section data-markdown><script type="text/template">
+## Aufgabe 3
+</script></section><section data-markdown><script type="text/template">
+### Beispiel
+
+<div align="left">Sei n=1:</div>
+
+Funktion || $f_i(0)$ | $f_i(1)$
+--- || --- |
+$f_1$ || 0 | 0
+$f_2$ || 0 | 1
+$f_3$ || 1 | 0
+$f_4$ || 1 | 1
+</script></section><section data-markdown><script type="text/template">
+### $a)$
+
+$$
+|\mathbb{B}_{n}| = 2^{(2^n)}
+$$
+</script></section><section data-markdown><script type="text/template">
+### $b)$
+
+$$
+|\mathbb{B}_{n, m}| = (2^m)^{(2^n)} = 2^{(m\cdot 2^n)}
+$$
+</script></section><section data-markdown><script type="text/template">
+### Häufige Fehler
+
+- Tutorats exlusive
+</script></section><section data-markdown><script type="text/template">
+### Beweis: $\ m=1$
+
+- Tutorats exclusive
+</script></section><section data-markdown><script type="text/template">
+### Nächste Aufabe
+
+- [Aufgabe 1](/exc01.md#/4)
+- [Aufgabe 2](/exc01.md#/5)
+- [Aufgabe 4](/exc01.md#/7)
+- [Blatt 2](/exc01.md#/8)
+</script></section></section><section ><section data-markdown><script type="text/template">
+## Aufgabe 4
+</script></section><section data-markdown><script type="text/template">
+### Beweisstruktur
+
+- $\mathrm{Z\kern-.3em\raise-0.5ex\hbox{Z}}: x=y$
+  - <span style="color:#FF0000">(x=y), (x=y'), ..., (x=x)</span>
+  - <span style="color:#00FF00">$x = ... = y$</span>
+  - <span style="color:#00FF00">(Wahre Aussage) $\Leftrightarrow (x' = y') \Leftrightarrow (x = y)$</span>
+</script></section><section data-markdown><script type="text/template">
+### $a)$ Assoziativität
+- $x \vee ( y \vee z ) = (x \vee y) \vee z$
+- $x \wedge ( y \wedge z ) = (x \wedge y) \wedge z$
+
+<div style="margin-top: 100px;"/>
+#### Es gilt
+$\begin{align}
+x \vee y &:= x+y-x\cdot y\\\\
+x \wedge y &:= x \cdot y\\\\
+\neg x &:= 1-x
+\end{align}$
+</script></section><section data-markdown><script type="text/template">
+### $b)$ Absorbtion
+
+- $x \vee (x \wedge y) = x$
+- $x \wedge (x \vee y) = x$
+
+<div style="margin-top: 100px;"/>
+#### Es gilt
+$\begin{align}
+x \vee y &:= x+y-x\cdot y\\\\
+x \wedge y &:= x \cdot y\\\\
+\neg x &:= 1-x
+\end{align}$
+</script></section><section data-markdown><script type="text/template">
+### $c)$ Komplement
+
+- $x \vee (y \wedge \neg y) = x$
+- $x \wedge (y \vee \neg y) = x$
+
+<div style="margin-top: 100px;"/>
+#### Es gilt
+$\begin{align}
+x \vee y &:= x+y-x\cdot y\\\\
+x \wedge y &:= x \cdot y\\\\
+\neg x &:= 1-x
+\end{align}$</script></section><section data-markdown><script type="text/template">
+## Nächste Aufgabe
+
+- [Aufgabe 1](/exc01.md#/4)
+- [Aufgabe 2](/exc01.md#/5)
+- [Aufgabe 3](/exc01.md#/6)
+- [Blatt 2](/exc01.md#/8)
+</script></section></section><section ><section data-markdown><script type="text/template">
+## Blatt 2
+
+- Tutorats exlusive
+</script></section><section data-markdown><script type="text/template">
+### RETI Simulator
+
+- Im [Ilias](https://ilias.uni-freiburg.de/) unter Zusatzmerialien
+- Debugging
+</script></section><section data-markdown><script type="text/template">
+### Hinweise
+</script></section><section data-markdown><script type="text/template">
+### Klausur Relevanz
+</script></section></section><section  data-markdown><script type="text/template">
+## Sonstiges
+</script></section><section  data-markdown><script type="text/template">
+## Quellen
+
+- [Participation Award](http://www.corporatekitsplus.com/store/pc/catalog/Award-Participation-Goes-Blue-Detail.jpg)
+- [Suicide frog](https://i.imgflip.com/xhpk1.jpg)
+- [Copy-Paste](https://res.cloudinary.com/big-cabal/image/upload/w_800,f_auto,fl_lossy,q_auto/v1472325169/tnv3w1rk798hg1kin9gq.jpg)
+- [English doge](http://m.memegen.com/f6foyv.jpg)
+</script></section></div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+              { src: 'plugin/math/math.js', async: true },
+              { src: 'plugin/math/math.js', async: true }
+            ];
+
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default',
+              dependencies: deps,
+              math: {
+                mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+                config: 'TeX-AMS_HTML-full'
+              }
+            };
+
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+
+            var options = {};
+            options = extend(defaultOptions, options, queryOptions);
+            Reveal.initialize(options);
+        </script>
+
+          <script src="/scripts/presentations"></script>
+    </body>
+</html>
+
