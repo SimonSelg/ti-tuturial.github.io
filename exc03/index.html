@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>rTI TUTORIAL EXC03</title>
+        <title>reveal-md</title>
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/black.css" id="theme">
         <!-- For syntax highlighting -->
@@ -140,14 +140,14 @@ $\Rightarrow [a] = [a_{n-1}a]$
 </script></section><section data-markdown><script type="text/template">
 ### Hauptbeweis
 
-$$[y] \stackrel{\*}{=} [y\_{32}^1y] \stackrel{\*}{=} [y\_{32}^2y] \stackrel{\*}{=} \cdots \stackrel{\*}{=} [y\_{32}^8y] \stackrel{\*}{=} [sext(y)]$$
+$$[y] \stackrel{\*}{=} [y\_{32}^1y] \stackrel{\*}{=} [y\_{32}^2y] \stackrel{\*}{=} \cdots \stackrel{\*}{=} [y\_{32}^8y] = [sext(y)]$$
 </script></section><section data-markdown><script type="text/template">
 ### Beweis des Lemmas
 
 $$
 \begin{align}
 [a\_{n-1}a] &= -a\_{n-1} \cdot 2^n +  \sum\_{i=-k}^{n-1} a\_i \cdot 2^i \\\\
-&= -a\_{n-1} \cdot 2^n + \left(a\_{n-1} \cdot 2^{n-1} \cdot \sum\_{i=-k}^{n-2} a\_i \cdot 2^i \right) \\\\
+&= -2 \cdot a\_{n-1} \cdot 2^{n-1} + a\_{n-1} \cdot 2^{n-1} + \sum\_{i=-k}^{n-2} a\_i \cdot 2^i \\\\
 &= -a\_{n-1} \cdot 2^{n-1} + \sum\_{i=-k}^{n-2} a\_i \cdot 2^i \\\\\
 &= [a]
 \end{align}
@@ -190,19 +190,20 @@ $$
 ### Einerkomplement
 
 $$
-[d\_n, \ ..., \ d\_0, \ ..., \ d\_{k-1}, \ d\_{k} ]\_1 := \left(\sum\_{i=(-k)}^{n-1} d\_i \cdot 2^i \right) - d_n (2^n - 2^{-k})
+[d\_n, \ ..., \ d\_0, \ ..., \ d\_{k} ]\_1 := \left(\sum\_{i=(-k)}^{n-1} d\_i \cdot 2^i \right) - d_n (2^n - 2^{-k})
 $$
 </script></section><section data-markdown><script type="text/template">
 ### a) Nicht Eindeutigkeit der 0
 
 - Fall $d\_n = 0$
-- Fall $d\_n = 1$</script></section><section data-markdown><script type="text/template">
+- Fall $d\_n = 1$
+</script></section><section data-markdown><script type="text/template">
 ### a) Fall $d\_n = 0$:
 $$
 \begin{align}
 & \ \\\\
 &0 = \left(\sum\_{i=(-k)}^{n-1}2^i \cdot d\_i \right) \\\\
-\Leftrightarrow \ \ \ &\forall i: d\_i = 1 \\\\
+\Leftrightarrow \ \ \ &\forall i: d\_i = 0 \\\\
 \end{align}
 $$
 </script></section><section data-markdown><script type="text/template">
@@ -221,8 +222,8 @@ Es gilt: $$\sum\_{i=-k}^{n-1} 2^i = (2^n - 2^{-k})$$
 </script></section><section data-markdown><script type="text/template">
 ### b) Fallunterscheidung
 
-- Fall $d\_n = 1$
 - Fall $d\_n = 0$
+- Fall $d\_n = 1$
 </script></section><section data-markdown><script type="text/template">
 ### b) Fall $d\_n = 0$:
 $$[d\_n, ..., d\_0, ..., d\_{-k}]\_1 = \sum\_{i=-k}^{n-1}d\_i \cdot 2^i$$
@@ -358,3 +359,4 @@ $$
           <script src="/scripts/presentations"></script>
     </body>
 </html>
+
