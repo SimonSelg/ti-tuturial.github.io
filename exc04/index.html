@@ -43,8 +43,8 @@
 </script></section><section data-markdown><script type="text/template">
 ### Blatt 4 Statistiken
 
-- $\varnothing_{Punkte} \approx 11.5$
-- $\sigma_{Punkte} \approx 4.2$
+- $\varnothing_{Punkte} \approx 15.6$
+- $\sigma_{Punkte} \approx 3.5$
 </script></section><section data-markdown><script type="text/template">
 ### Klausur Relevanz
 </script></section><section data-markdown><script type="text/template">
@@ -58,16 +58,18 @@
 </script></section></section><section ><section data-markdown><script type="text/template">
 ## Aufgabe 1
 </script></section><section data-markdown><script type="text/template">
-## CMOS vs NMOS vs PMOS
+## CMOS
 
 <img src="./images/join-the-resistance.jpg" style="width: 50%;"/>
 
 <aside class="notes" data-markdown>Logisim Beispiel</aside></script></section><section data-markdown><script type="text/template">
+## CMOS Transistoren
+
+<img src="./images/trans.png" style="width: 50%;"/>
+</script></section><section data-markdown><script type="text/template">
 ## CMOS NOR
 
 <img src="./images/nor.png" style="width: 50%;"/>
-</script></section><section data-markdown><script type="text/template">
-### Häufige Fehler
 </script></section><section data-markdown><script type="text/template">
 ### Nächste Aufabe
 
@@ -79,9 +81,9 @@
 </script></section></section><section ><section data-markdown><script type="text/template">
 ## Aufgabe 2
 
-$f: \mathbb{B}^3 \mapsto \mathbb{B}, \\ f(x_1, \\ x_2, \\ x_3) = x_1 \oplus x_2 \oplus x_3$
+$f: \mathbb{B}^3 \mapsto \mathbb{B} \\\\ f(x_1, \\ x_2, \\ x_3) = x_1 \oplus x_2 \oplus x_3$
 </script></section><section data-markdown><script type="text/template">
-## Aufgabe 2a - Funktionstabelle
+### a) Funktionstabelle
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;border-color:#aabcfe;}
@@ -161,19 +163,23 @@ $f: \mathbb{B}^3 \mapsto \mathbb{B}, \\ f(x_1, \\ x_2, \\ x_3) = x_1 \oplus x_2 
 
 <font color="#ff4500">$ \\\\ \Rightarrow$</font> $ON(f) = \left\\{(001), (010), (100), (111)\right\\}$
 </script></section><section data-markdown><script type="text/template">
-## Aufgabe 2a - KDNF
+### a) KDNF
 
 $ON(f) = \left\\{(001), (010), (100), (111)\right\\}$
 <font color="#ff4500">$ \\\\ \Rightarrow$</font> $f =  \\ \overline{x_1} \\ \overline{x_2}x_3 +   \\ \overline{x_1}x_2 \\ \overline{x_3} +  x_1 \\ \overline{x_2} \\ \overline{x_3} + \\ x_1 \\ x_2 \\ x_3$
 </script></section><section data-markdown><script type="text/template">
-## Aufgabe 2b
+### b) Schaltkreis
 
 \begin{align}
 f &= \\ \overline{x\_1}\\ \overline{x\_2}x\_3 +  \\ \overline{x\_1}x\_2\\ \overline{x\_3} +  x\_1\\ \overline{x\_2}\\ \overline{x\_3} + x\_1 x\_2 x\_3\\\\
 &= \left(((\\ \overline{x\_1}\\ \overline{x\_2})x\_3) +  ((\\ \overline{x\_1}x\_2)\\ \overline{x\_3}) +  ((x\_1\\ \overline{x\_2}\\ \overline{x\_3}) + x\_1 x\_2 x\_3)\right)
 \end{align}
+</script></section><section data-markdown><script type="text/template">
+### Häufige Fehler
 
-<aside class="notes" data-markdown>Tafel</aside></script></section><section data-markdown><script type="text/template">
+- Knoten Beschriftung
+- $AND_3$, $OR_4$
+</script></section><section data-markdown><script type="text/template">
 ### Nächste Aufabe
 
 - [Aufgabe 1](/exc04.md#/4)
@@ -232,6 +238,11 @@ $v\_4$ | $(x\_1 \wedge x\_2)  \vee ((x\_1 \oplus x\_2) \wedge x\_3)$
 
 </script></section><section data-markdown><script type="text/template">
 ### Häufige Fehler
+
+- Tupel Klammern
+- Knoten Beschriftung
+- Reihenfolge von $IN$ misachtet
+- $C := (\overrightarrow{X\_3},   (V,  E ),   \mbox{typ},   IN,    \overrightarrow{Y\_2})$ vergessen.
 </script></section><section data-markdown><script type="text/template">
 ### Nächste Aufabe
 
@@ -244,25 +255,42 @@ $v\_4$ | $(x\_1 \wedge x\_2)  \vee ((x\_1 \oplus x\_2) \wedge x\_3)$
 </script></section><section data-markdown><script type="text/template">
 ## PLA
 <img src="./images/pla.jpg" style="width: 50%;"/>
+</script></section><section data-markdown><script type="text/template">
+### f1
+$$
+\\\\
+\\\\
+$$
 
-<aside class="notes" data-markdown>Polynome an der Tafel vom PLA ableiten</aside></script></section><section data-markdown><script type="text/template">
-## Hyper Cube
-<img src="./images/hyper.png" style="width: 45%;"/>
+<img src="./images/blankhyper.png" style="width: 60%;"/>
+</script></section><section data-markdown><script type="text/template">
+### Kosten
 
-<aside class="notes" data-markdown>Usage erklären</aside></script></section><section data-markdown><script type="text/template">
-## Minimale Darstellung - f1
+- $cost_1(p_q, \\ ..., \\ p_m):$ Anzahl Zeilen in PLA
+- $cost_2(p_q, \\ ..., \\ p_m):$ Anzahl Transistoren in PLA
+
+</script></section><section data-markdown><script type="text/template">
+### Minimale Darstellung
+####f1 - Würfel
 
 <img src="./images/hyper_f1.jpg" style="width: 60%;"/>
-
-$q_1 = x_1 x_4 + \bar{x_2}\bar{x_3}x_4 + x_1 \bar{x_2} x_3$
 </script></section><section data-markdown><script type="text/template">
-## Minimale Darstellung - f2
+### Minimale Darstellung
+#### f1 - Polynom
+
+$$q_1 = x_1 x_4 + \bar{x_2}\bar{x_3}x_4 + x_1 \bar{x_2} x_3$$
+</script></section><section data-markdown><script type="text/template">
+### Minimale Darstellung
+#### f2 - Würfel
 
 <img src="./images/hyper_f2.jpg" style="width: 60%;"/>
+</script></section><section data-markdown><script type="text/template">
+### Minimale Darstellung
+#### f2 - Polynom
 
 $q_2 = x_2 x_4 + \bar{x_1}x_2\bar{x_3} + \bar{x_1} x_3 x_4$
 </script></section><section data-markdown><script type="text/template">
-## Nächste Aufgabe
+### Nächste Aufgabe
 
 - [Aufgabe 1](/exc04.md#/4)
 - [Aufgabe 2](/exc04.md#/5)
