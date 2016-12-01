@@ -1,0 +1,180 @@
+\documentclass{scrartcl}[11pt]
+\usepackage{german}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{braket}
+\usepackage{listings}
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{1pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Kopf- und Fusszeilen %
+%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\lhead{
+    \begin{tabular}{ll}
+        Danny Stoll
+    \end{tabular}
+}
+\chead{McKluskey}
+\rhead{TI-Tutorial}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\begin{document}
+
+%_______________________________________________________________________________
+%_______________________________________________________________________________
+
+\section*{Initialisierung}
+
+\begin{tabular}{cc}
+  \begin{tabular}{c}
+    $L_0^{\{x_1, x_2, x_3, x_4\}}$ \\ \hline \hline
+  \end{tabular} & $Prim_f = \emptyset$ \\
+  \begin{tabular}{c}
+    0000 \\ \hline
+    0001 \\
+    0100 \\
+    1000 \\ \hline
+    0101 \\
+    0110 \\
+    1010 \\
+    1100 \\ \hline
+    0111 \\
+    1110 \\ \hline
+    1111 \\
+  \end{tabular}
+\end{tabular}
+
+\section*{1. Schleifendurchlauf}
+
+\begin{tabular}{cccc}
+
+  \begin{tabular}{c}
+    $L_1^{\{x_1, x_2, x_3\}}$ \\ \hline \hline
+    000- \\  \hline
+    010- \\ \hline
+    011- \\ \hline
+    111- \\
+  \end{tabular} &
+
+
+  \begin{tabular}{c}
+    $L_1^{\{x_1, x_2, x_4\}}$ \\ \hline \hline
+    01-0 \\
+    10-0 \\ \hline
+    01-1 \\
+    11-0 \\
+
+  \end{tabular} &
+
+
+  \begin{tabular}{c}
+    $L_1^{\{x_1, x_3, x_4\}}$ \\ \hline \hline
+    0-00 \\ \hline
+    0-01 \\
+    1-00 \\ \hline
+    1-10 \\
+  \end{tabular} &
+
+
+  \begin{tabular}{c}
+    $L_1^{\{x_2, x_3, x_4\}}$ \\ \hline \hline
+    -000 \\ \hline
+    -100 \\ \hline
+    -110 \\ \hline
+    -111 \\
+
+  \end{tabular} \\ \\
+
+  $Prim_f = \emptyset$  \\ \\
+
+\end{tabular}
+
+
+\section*{2. Schleifendurchlauf}
+
+
+\begin{tabular}{ccc}
+
+  \begin{tabular}{c}
+    $L_2^{\{x_1, x_2\}}$ \\ \hline \hline
+    01-- \\
+  \end{tabular} &
+
+
+  \begin{tabular}{c}
+    $L_2^{\{x_1, x_3\}}$ \\ \hline \hline
+    0-0- \\
+  \end{tabular} &
+
+
+  \begin{tabular}{c}
+    $L_2^{\{x_1, x_4\}}$ \\ \hline \hline
+    1--0 \\
+  \end{tabular}  \\ \\
+
+  \begin{tabular}{c}
+    $L_2^{\{x_2, x_3\}}$ \\ \hline \hline
+    -11- \\
+  \end{tabular} &
+
+  \begin{tabular}{c}
+    $L_2^{\{x_2, x_4\}}$ \\ \hline \hline
+    -1-0 \\
+  \end{tabular} &
+
+  \begin{tabular}{c}
+    $L_2^{\{x_3, x_4\}}$ \\ \hline \hline
+    --00 \\
+  \end{tabular} \\ \\
+
+  $Prim_f = \emptyset$
+
+\end{tabular}
+
+\pagebreak
+
+\section*{3. Schleifendurchlauf}
+
+\begin{tabular}{cccc}
+
+  \begin{tabular}{c}
+    $L_3^{\{x_1\}}$ \\ \hline \hline
+  \end{tabular} &
+
+  \begin{tabular}{c}
+    $L_3^{\{x_2\}}$ \\ \hline \hline
+  \end{tabular} &
+
+  \begin{tabular}{c}
+    $L_3^{\{x_3\}}$ \\ \hline \hline
+  \end{tabular} &
+
+  \begin{tabular}{c}
+    $L_3^{\{x_4\}}$ \\ \hline \hline
+  \end{tabular} \\ \\
+\end{tabular}
+
+  $Prim_f = \{  0-0-, \ 1--0, \ -11-, \ -1-0, \ --00, \ 01-- \}$ \\
+
+\section*{Abbruch}
+
+
+
+\begin{align*}
+ &\bigcup_M L_3^M(f) = \emptyset \\
+\Rightarrow & \mbox{ Abbruch der Schleife und } return \ Prim(f)
+\end{align*}
+
+
+
+\end{document}
