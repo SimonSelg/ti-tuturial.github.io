@@ -1,0 +1,70 @@
+\documentclass{scrartcl}[11pt]
+\usepackage{german}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{braket}
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata,positioning}
+
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{1pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Kopf- und Fusszeilen %
+%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\lhead{TI-Tutorial}
+\chead{Quiz 1}
+\rhead{20 Minuten}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\begin{document}
+
+%_______________________________________________________________________________
+%_______________________________________________________________________________
+
+\section{Quine-McCluskey (10 Pkt.)}
+
+Die Funktion $f: \mathbb{B}^4 \rightarrow \mathbb{B}$ sei durch ihre $OFF$-Menge gegeben:
+$$
+OFF(f) := \{0010, 0110, 1011, 1111 \}
+$$
+
+Berechnen sie alle Primimplikanten von f nach dem Verfahren von Quine-McCluskey. Geben sie
+alle Zwischenschritte (d.h. die Menge $L_i^M$ und $Prim_i$) und das resultierende Minimalpolynom an.
+Achten Sie darauf, zu welchem Zeitpunkt der Algorithmus die Primimplikanten erkennt.
+
+\emph{Hinweis:} Sie dürfen in dieser Aufgabe die abkürzende Schreibweise für Monome verwenden ( z.B.
+statt $\overline{x_1} \ \overline{x_2} \ \overline{x_4}: \quad 01$-$1)$.
+
+%_______________________________________________________________________________
+%_______________________________________________________________________________
+\section{Kodierung (2+3+5 Pkt.)}
+\begin{itemize}
+  \item[a)] Geben Sie die Interpretationsfunktion $[.]_2$ für Zweierkomplementzahlen mit $n+1$ Vor- und $k$
+  Nachkommastellen (also $d_n d_{n-1} \ldots d_1 d_0 d_{-1} \ldots d_{-k})$ an.
+  \item[b)] Geben Sie die Werte folgender Zweierkomplementzahlen im Dezimalsystem an:
+  \begin{itemize}
+    \item[] 0101.10
+    \item[] 1001.01
+  \end{itemize}
+  \item[c)] Beweisen sie folgendes Lemma: \\ \\
+ \emph{Lemma}: Sei $[a]_2 = \left[a_{n-1}a_{n-2} \ldots a_0 \right]_2$ eine ganze Zahl in Zweier-Komplement-Darstellung mit n
+ Vorkommastellen und keinen Nachkommastellen. Dann gilt:
+ $$[\bar{a}]_2 + 1 = -[a]_2$$
+ Hierbei sei $[\bar{a}]_2$ die Zahl im Zweier-Komplement, die aus $[a]_2$ durch Invertieren aller Bits
+ hervorgeht. Abgesehen von der geometrischen Summenformel sollen keine Sätze aus der Vorlesung ohne
+ Beweis benutzt werden. \\ \\
+ \emph{Hinweis}: bei Zahlen ohne Nachkommastellen gilt k = 0, allerdings gehört k immer noch zu den
+ obigen Defintionen
+
+\end{itemize}
