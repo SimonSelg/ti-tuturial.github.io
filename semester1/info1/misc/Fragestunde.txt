@@ -1,0 +1,21 @@
+Info-Fragestunde:
+=================
+
+- Probeklausur
+- 50% mehr der Prunkte und mehr der Zeit
+- KEIN FÜLLER!!!!
+
+- Def von O-Notation
+- Geschichte, grob abschätzen
+- MRO (Klasse.mro()) -> kein zyklisch möglich
+- funktionale Programmierung = repräsentation der Funktionen, Zahlen, Mathematischen 
+                               Formeln
+- eher weniger Programmieren, eher Interpretieren
+- enumerate, map, filter, zip -> bulit in function
+- hashable?
+- tkinter
+- magic-methode lernen
+- Flag = Hinweis 
+- docstrings, doctest können, auch von syntax her korrekt
+- der kleine Gauss
+  

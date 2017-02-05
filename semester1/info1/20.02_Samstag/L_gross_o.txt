@@ -1,0 +1,7 @@
+ 
+1) linear
+2) linear
+3) n^2
+4) log n
+5) k * n
+6) konstant

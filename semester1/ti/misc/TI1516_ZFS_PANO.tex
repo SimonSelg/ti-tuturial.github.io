@@ -1,0 +1,368 @@
+\documentclass{scrartcl}[10pt]
+\usepackage{german}
+\usepackage[latin1]{inputenc}
+\usepackage[german]{babel}
+\usepackage{dsfont}
+% zus\"atzliche mathematische Symbole, AMS=American Mathematical Society 
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{tikz,pgf}
+\usepackage{circuitikz}
+% f\"urs Einbinden von Graphiken
+\usepackage{graphicx}
+
+% f\"ur Namen etc. in Kopf\textendash{} oder Fu\ss zeile
+\usepackage{fancyhdr}
+\usepackage{float}
+
+% erlaubt benutzerdefinierte Kopfzeilen 
+\pagestyle{fancy}
+
+% Definition der Kopfzeile
+\rhead{}
+\chead{}
+\lhead{}
+\begin{document}
+\tableofcontents
+\pagebreak
+\section{Grundlagen}
+\subsection{Boolesche Axiome}
+ Kommutativit\"at:\\
+ $x+y = y+x \ \ \forall x,y \in \{0,1\}$\\
+ $x*y = y*x \ \ \forall x,y \in \{0,1\}$\\
+ Assoziativit\"at:\\
+ $x+(y+z) = (x+y)+z \ \ \forall x,y,z \in \{0,1\} $\\
+ $x*(y*z) = (x*y)*z \ \ \forall x,y,z \in \{0,1\} $\\
+ Apsorption:\\
+ $ x+(x*y) = x \ \ \forall x,y \in \{0,1\}$\\
+ $ x*(x+y) = x \ \ \forall x,y \in \{0,1\}$\\
+ Distributivit\"at:\\ 
+ $ x + (y*z) = (x+y) * (x+z) \ \ \forall x,y,z \in \{0,1\}$\\
+ $ x * (y+z) = (x*y) + (x*z) \ \ \forall x,y,z \in \{0,1\}$\\
+ Komplement:\\
+ $ x+(y*\neg y) = x \ \ \forall x,y \in \{0,1\}$\\
+ $ x*(y+\neg y) = x \ \ \forall x,y \in \{0,1\}$\\
+\subsection{Boolesche Regeln}
+Doppeltes Komplement:\\
+$ \neg (\neg x) = x \ \ \forall x\in \{0,1\}$\\
+Idempotenz:\\
+$ x+x = x*x = x \ \ \forall x\in \{0,1\}$\\
+De-Morgan-Regel:\\
+$ \neg(x+y) = \neg x * \neg y$\\
+$ \neg(x*y) = \neg x + \neg y$\\
+Consensus-Regel:\\
+$ (x*y)+((\neg x)*z) = (x*y)+((\neg x)*z) + (y*z)$\\
+$ (x+y)*((\neg x)+z) = (x+y)+((\neq x)+z) * (y+z)$
+\subsection{Graphen}
+\subsubsection{Allgemeines}
+$ G = (V,E) \\ 
+V \dots \text{ endliche Menge an Knoten}\\ 
+E \dots \text{ endliche Menge an Kanten}\\
+\text{Q}(e) \dots \text{ Quelle der Kante e  Q}:E \rightarrow V\\
+\text{Z}(e) \dots \text{ Ziel der Kante e Z}:E \rightarrow V\\
+\text{indeg}(v) \ \ \text{indeg}: V \Rightarrow \mathbb{N}, \text{ Eingangsgrad indeg}(v) = \{v | \text{Z}(e) = v\}\\
+\text{outdeg}(v) \ \ \text{outdeg}: V \Rightarrow \mathbb{N}, \text{ Ausgangsgrad outdeg}(v) = \{v | \text{Q}(e) = v\}$
+\subsubsection{Bestimmung der Knoten}
+Ein Knoten hei\ss t:
+\begin{itemize}
+\item[-] Wurzel $\Leftrightarrow \text{indeg}(v) = 0$
+\item[-] Blatt $ \Leftrightarrow \text{outdeg}(v) = 0$
+\item[-] innerer Knoten $\Leftrightarrow \text{outdeg}(v) > 0$ 
+\end{itemize}
+Die Graphtiefe ist der l\"angste Pfad in einem Graphen, ferner ist ein Pfad eine Folge von $k$ Kanten. ($k \in \mathbb{N}$)\\
+\subsubsection{B\"aume}
+Als Baum wird ein gerichteter azyklischer Graph mit einer Wurzel bezeichnet.\\
+Bin\"arer Baum: outdeg$(v) \leq 2$
+\subsection{Landausche $\mathcal{O}$-Notation}
+Die landausche $\mathcal{O}$-Notation ist eine asymptotische Absch\"atzung f\"ur die Gr\"o\ss e parametrisierbarer Objekte, Laufzeit von Algorithmen, et cetera.\\
+\begin{align*}
+\exists c, x_0 \in \mathbb{R}_0^+:& \text{f}(x) \leq c*\text{g}(x) \Leftrightarrow f(x) \in \mathcal{O}(\text{g}(x))\\
+&\text{Bsp.:}\\
+& 5 \cdot x +2 \in \mathcal{O}(x^2)\\
+& c = 6, \ x_0 = 2 \ \ \forall x > x_0\\
+& 5 \cdot x + 2 <_{x > 2} 5 \cdot x + x = 6 \cdot x \leq_{x \geq 1} 6 \cdot x^2 \ \ \forall x > 2  
+\end{align*}
+\pagebreak
+\section{Kodierung}
+\subsection{Kodierung von Zeichen}
+\subsubsection{Alphabet, W\"orter und Zeichen}
+A$= \{a_1, \dots, a_n\}$ A$\neq \emptyset$\\
+A ist endliches Alphabet der Gr\"o\ss e m.\\
+$a_1,\dots, a_n$ sind Zeichen des Alphabets.\\
+A*$= \{w|w=b_1,\dots,b_n \ \ n \in \mathbb{N} \ \ \forall i \ \ 1 \leq i \leq n: b_i \in \text{A}\}$\\
+A* ist die Menge aller W\"orter \"uber dem Alphabet A.\\
+$|b_1 \dots b_n| := n$ hei\ss t L\"ange des Wortes $b_1 \dots b_n$\\
+$ \mathcal{E} $ ist das leere Wort $(n = 0)$
+\subsubsection{Huffmann-Code}
+Vorgehensweise:
+\begin{itemize}
+\item[1.] Relative H\"aufigkeitsverteilung der Zeichen ermitteln.
+\item[2.] Nun werden solange die beiden geringsten H\"aufigkeitsverteilungen baumartig miteinander verbunden und addiert, bis keine H\"aufigkeiten mehr \"ubrig sind.
+\item[3.] Die entstandene Baumstruktur dient zur Kodierung. Linke Pfade werden mit der Ziffer 0 oder 1 belegt und rechte Pfade mit der entsprechend anderen Ziffer.
+\end{itemize}
+Bsp.:\\ \\
+\begin{tikzpicture}
+\node (root) at (0,0) {};
+\node (a) at (3,0) {a};
+\node (ah) at (3.1,-0.5) {50\%};
+\node (b) at (6,0) {b};
+\node (bh) at (6.1,-0.5) {24\%};
+\node (c) at (9,0) {c};
+\node (ch) at (9.1,-0.5) {24\%};
+\node (d) at (12,0) {d};
+\node (dh) at (12.1,-0.5) {2\%};
+
+%Verbindungen
+\node (a1) at (10.5,-2.5) {26\%};
+\node (a2) at (7.5,-4.5) {50\%};
+\node (a3) at (4.5,-6.5) {100\%};
+
+\draw [draw=magenta] (12.5,-1) -- (a1.north east) node [right=20, color=magenta] {1};
+\draw [draw=cyan] (9,-1)  -- (a1.north west) node [left=10, color=cyan] {0};
+\draw [draw=magenta] (a1.south west) -- (a2.north east) node [right=20,color=magenta] {1};
+\draw [draw=magenta] (a2.south west) -- (a3.north east) node [right=20,color=magenta] {1};
+\draw [draw=cyan] (6,-1) -- (a2.north west) node [left=10, color=cyan] {0};
+\draw [draw=cyan] (3,-1) -- (a3.north) node [left=10, color=cyan] {0};
+
+%Kästen um die Zeichen
+\draw (2,0.5) rectangle (4,-1);
+\draw (5,0.5) rectangle (7,-1);
+\draw (8,0.5) rectangle (10,-1);
+\draw (11,0.5) rectangle (13,-1);
+
+\end{tikzpicture}
+\\ \\
+\begin{tabular}{|c||c|c|c|c|}
+\hline
+Zeichen: & a & b & c & d\\ \hline \hline
+Code: & 0 & 10 & 110 & 111\\
+\hline
+\end{tabular}
+\\ \\
+Mittlere Codel\"ange des Huffmann-Code:\\
+ $C: A \rightarrow \{0,1\}*: \sum_{i=1}^{m}{\text{p}(a_i) \cdot | \text{c}(a_i)|}$\\
+ \subsection{Kodierung von Zahlen}
+ Festkommazahlen: n+1 Vorkommastellen und k $\geq$ 0 Nachkommastellen
+ b ... Basis
+ i ... Stelle
+$\delta(d_i)$... Zuordnung der Ziffer zur nat\"urlichen Zahl\\
+ $<d> = \sum_{i=-k}^{n}{b^i \cdot \delta(d_i)}$\\
+ \subsubsection{Betrag und Vorzeichen}
+\[(-1)^{d_n} \cdot \sum_{i=-k}^{n-1}{d_i \cdot 2^i} \ \ \ \ \text{symmetrischer Zahlenbereich: } R_n = [-2^n+2^{-k}, 2^n-2^{-k}]\]
+\subsubsection{Einerkomplement}
+\[\sum_{i=-k}^{n-1}{d_i \cdot 2^i}-d_n \cdot (2^n-2^{-k}) \ \ \ \ \text{symmetrischer Zahlenbereich: } R_n = [-2^n+2^{-k}, 2^n-2^{-k}]\]
+\subsubsection{Zweierkomplement}
+\[\sum_{i=-k}^{n-1}{d_i \cdot 2^i}-d_n \cdot 2^n \ \ \ \ \text{asymmetrischer Zahlenbereich: } R_n = [-2^n, 2^n-2^{-k}]\]
+\newpage
+\section{Kombinatorische Logik}
+\subsection{Kombinatorische Schaltkreise}
+\begin{tikzpicture}
+\draw (0,0) node[nmos]{} (0,1);
+\draw (6,0) node[pmos]{} (6,1);
+\node at (2,0.6) {n-Kanal Transistor};
+\node at (2,0.1) {leitet bei logisch 1};
+\node at (2,-0.4) {sperrt bei logisch 0};
+\node at (8,0.6) {p-Kanal Transistor};
+\node at (8,0.1) {leitet bei logisch 0};
+\node at (8,-0.4) {sperrt bei logisch 1};
+\end{tikzpicture}
+\subsection{Formale Beschreibung von Schaltkreisen}
+S$_k$ ist ein 5-Tupel bestehend aus:\\
+\[\text{S}_k = \{\overrightarrow{X_n}, G, \text{typ}, \text{IN}, \overrightarrow{Y_m}\}\]\\
+$\overrightarrow{X_n}$ ist eine endliche Folge von Eing\"angen.\\ \\
+$G$: Gerichteter Graph mit Menge der Knoten, $V$, und Menge der Kanten, E. Hierbei sind Knoten des Graphen Gatter, Konstanten und Eingangsvariablen. Kanten des Graphen sind die Verbindungen.\\ \\
+$I = V\backslash(\{0,1\}\cup\{x_1,\dots,x_n\})$: Die Menge der Gatter in G.\\ \\
+$\text{typ}: I \rightarrow BIB$ (Gatterbibliothek), typ ordnet also jedem Gatter des Schaltkreises seinen typ zu. (OR, EXOR, AND, NAND, ...)\\ \\
+IN: $I \rightarrow E$ ordnet jedem Gatter die eingehenden Kanten zu.\\ \\
+$\overrightarrow{Y_m} = (y_1, \dots, y_m)$ zeichnet die Knoten $y_1,\dots,y_m$ als Ausg\"ange aus.\\ \\
+\newpage
+\subsection{Belegung $\alpha$, Simulation und Interpretationsfunktion $\Psi$}
+\[\alpha = (\alpha_1, \dots, \alpha_n)\]
+\[\Phi_{\text{SK},\alpha}(X_i) = \alpha_i \ \ \forall 1 \leq i \leq n\]
+Berechnung von $\Phi_{\text{SK},\alpha}$ bei Eingangsbelegung $\alpha$ hei\ss t Simulation. Die boolesche Funktion an einem Knoten hei\ss t Interpretationsfunktion $\Psi$:
+\[\Psi(v): \mathcal{B}^n \rightarrow \mathcal{B}\]
+\[\Psi(v)(\alpha):= \Phi_{\text{SK},\alpha}\]
+\[\Psi(0) = 0 \ \ \ \ \Psi(1) = 1\]
+\[\Psi(X_i)(\alpha_1,\dots,\alpha_n) = a_i \ \ \forall \alpha \in \mathcal{B}^n\]
+\[\Psi((g+h)) = \Psi(g) + \Psi(h)\]
+\[\Psi(g \cdot h) = \Psi(g) \cdot \Psi(h)\]
+\[\Psi(\neg g) = \neg \Psi(g)\]
+\subsection{Literale, Monome, Minterme}
+$x_i, x_i' \in BE(x_n)$\\
+$x_i$ hei\ss t positives Literal (auch $x_i^1)$\\
+$x_i'$ hei\ss t negatives Literal (auch $x_i^0 \text{ oder } \bar{x_i}$)\\ \\
+$\bigwedge_1^n{x_i^{\alpha_i}} \ x_i = \{x_1,\dots, x_n\}$ hei\ss t Monom, wenn jedes $x_i$ maximal einmal vorkommt. Zu keinem $x_i, x_i'$ darf der Gegensatz auftreten.\\ \\
+Bsp.: \ \ $n = 4 \alpha= (0, 1, 1, 0) \in \mathcal{B}^4\\
+m(\alpha) = x_1^0 \cdot x_2^1 \cdot x_3^1 \cdot x_4^0 = \bar{x_1} \cdot x_2 \cdot x_3 \cdot \bar{x_4}\\
+\Psi(m(\alpha))(\alpha) = \bar{0} \cdot 1 \cdot 1 \cdot \bar{0} = 1 \cdot 1 \cdot 1 \cdot 1 = 1\\
+\Psi(m(\alpha))(1, 1, 1, 0) = \bar{1} \cdot 1\cdot 1 \cdot \bar{0} = 0 \cdot 1 \cdot 1 \cdot 1 = 0$\\
+\subsection{Polynome, KDNF}
+$\bigvee_{i=1}^m \bigwedge_{i=0}^{n_i}{x_i^{\alpha_i}}$ hei\ss t Polynom.\\ \\
+Polynome sind also eine Disjunktion von Konjunktionen paarweise unterschiedlicher Literale (Monome). Die Monome sind hierbei ebenfalls paarweise verschieden.\\
+Ein Polynom von f hei\ss t auch disjunktive Normalform von f. Ein vollst\"andiges Polynom von f hei\ss t auch kanonische Disjunktive Normalform (KDNF) von f. \\
+Vollst\"andig ist ein Polynom dann, wenn alle Monome des Polynoms Minterme sind. \\ \\
+Als ON-Menge oder Erf\"ullbarkeitsmenge von f werden alle Belegungen $\alpha \in \mathcal{B}^n$ bezeichnet, die unter Anwendung der booleschen Funktion f 1 ergeben.\\
+$ON(f): \mathcal{B}^n \rightarrow \mathcal{B}$\\
+\subsection{Programmable logical Array (PLA)}
+$M(p_1,\dots,p_m) \dots$ Menge der in diesen Polynomen verwendeten Monome\\
+$q \dots $ Monome in den Polynomen\\
+$\text{cost}_1(p1, \dots, p_m):$ Anzahl der ben\"otigten Zeilen im PLA.\\
+$\text{cost}_2(p1, \dots, p_m):$ Anzahl der ben\"otigten Transistoren.\\
+$\text{cost}_1(p1, \dots, p_m) = |M(p1, \dots, p_m) |$ \\
+$\text{cost}_2(p1, \dots, p_m) = \sum_{q\in M(p_1, \dots, p_m)}^{}|q| + \sum_{i=1}^{m}{|M(p_i)|}$
+\subsection{Implikanten, Primimplikanten}
+$f,g \in \mathcal{B}_n,$ boolesche Funktionen.\\
+Es gilt: $f\leq g$, wenn:\\
+$\forall \alpha \in \mathcal{B}_n:$
+\begin{align*}
+f(\alpha) &\leq g(\alpha)\\
+ \Rightarrow |ON(f)| &\leq |ON(g)| \\
+ \Rightarrow ON(f) &\subset ON(g)
+ \end{align*}
+Ein Implikant von $f$ ist ein Monom $q$ mit $q \leq f$. Ein Primimplikant von $f$ ist ein Monom $q$ von $f$, bei dem es keinen Implikanten $s$ von $f$ gibt, sodass: $q \leq s$.
+\subsection{Minimalpolynom}
+Ein Minimalpolynom $p$ einer booleschen Funktion $f$ ist mit der Eigenschaft \\ cost($p$) $\leq$ cost($p'$) $\forall p'$ gegeben
+\subsection{Quine-McCluskey}
+\begin{itemize}
+\item[Verfahren:]Vergleiche alle Elemente der ON-Menge ($L_0$), die sich in einer Stelle unterscheiden $(m \cdot x, m \cdot x')$. Schreibe die nicht verwendeten Elemente in Prim(f) (Menge) und schreibe die verglichenen Elemente in der Form m - , wobei - die beliebige Variable ist, in die neue Menge $L_{n+1}^{m}$. Verfahre weiter, bis keine Elemente mehr verglichen werden k\"onnen.
+\end{itemize}
+\newpage
+\subsection{Primimplikantentafel}
+\subsubsection{Motivation}
+Beim Verfahren von Quine und McCluskey k\"onnenals Ergebnis sich \"uberdeckende Primimplikanten herauskommen.Zur \"Uberpr\"ufung wird dann eine Primimplikantentafel gebidet:
+\begin{tabular}{c|ccc}
+ & min($\alpha_1$) & $\dots$ & min$(\alpha_n)$\\ \hline
+ $m_1$\\
+ $\dots$\\
+ $m_n$
+\end{tabular}$\alpha_1, \dots, \alpha_n \in \text{ON}(f), \ \ m_1, \dots, m_n \in \text{Prim}(f)$
+\subsubsection{Reduktionsregeln f\"ur die Primimplikantentafel}
+\begin{itemize}
+\item[1.] Entferne aus der PIT alle wesentlichen Primimplikanten und alle MInterrme, die von diesen \"uberdeckt werden.\\ Wesentlich ist ein Primimplikant, wenn er als einziger einen Minterm (Element aus der ON-Menge) \"uberdeckt.
+\item[2.]Entferne aus der Primimplikantentafel alle Minterme, die einen anderen Minterm dominieren, also an allen Stellen des dominierten Minterms, bei dem dieser den Wert 1 hat ebenfalls den Wert 1 haben oder mehr vorkommen hiervon haben.
+\item[3.] Entferne aus der PIT(f) alle Primimplikanten, die durch einen anderen, nicht teureren Primimplikanten dominiert werden.\\ Dominiert wird ein Primimplikant, wenn er die gleichen Minterme \"uberdeckt und der dominierende Minterm zus\"atzlich an anderen Mintermen eine 1 hat. Letzteres gilt nicht zwangsl\"aufig.
+\end{itemize}
+Ein Primimplikant hei\ss t wesentlich, wenn es einen Minterm min($\alpha$)von f gibt, der nur von diesem Primimplikanten \"uberdeckt wird.
+\begin{align*}
+\text{PIT}(f)[m, min(\alpha)] &= 1\\
+\text{PIT}(f)[m', min(\alpha)] &= 0 \ \ \forall m' \in Prim(f)\\
+\end{align*}
+Eine PIT hei\ss reduziert, wenn keine der Reduktionsregeln mehr anwendbar sind.\\
+Ist eine reduzierte PIT nicht leer, so spricht man vom zyklischen \"Uberdeckungsproblem. Dieses ist nur heuristisch l\"osbar. (z.B. Petrick's Methode)
+\subsubsection{Petrick's Methode}
+\"Uberdeckte Minterme werden disjunktiv verkn\"upft und alle \"uberdeckenden Minterme werden konjunktiv verkn\"upft. Es wird jeder Ausdruck miteinander ausmultipliziert. Die Terme mit der geringsten Anzahl an Literalen ergeben das Minimalpolynom.
+\subsection{Arithmetische Schaltungen}
+\subsubsection{Kostenma\ss}
+Die Kosten eines Schaltkreises sind durch die Anzahl seiner Gatter gegeben (gro\ss e Kosten bedeuten hohes Energiepensum und eine gr\"o\ss ere Fl\"ache)\\
+Die Tiefe eines Schaltkreises ist definiert durch die maximale Anzahl an Gattern auf einem Pfad eines beliebigen Eingangs zum Ausgang. (Signallaufzeit)
+\subsubsection{Carry-Ripple-Addierer (Schulmethode)}
+\begin{tikzpicture}
+\def\t{-0.5};
+\def\b{\t-2.5};
+\def\l{10};
+\def\r{\l+4}:
+\draw (\l+1,\t+0.5) node (an) {$a_0$};
+\draw (\r-1,\t+0.5) node (bn) {$b_0$};
+\draw (\r+0.5,\t-0.5) node (cn) {$c_{-1}$};
+\draw (\l+1,\b-0.5) node (sn) {$c_0$};
+\draw (\r-1,\b-0.5) node (sn) {$s_{0}$};
+\draw (\l+2,\t-1.25) node (FAn) {FA};
+\draw (11,\b-0.3) -- (9.25,\b-0.3);
+\draw (9.25,\b-0.3) -- (9.25,\t-0.5);
+
+\draw (\l+1,\t) -- (\l+1,\t+0.3);
+\draw (\r-1,\t) -- (\r-1,\t+0.3);
+\draw (\r,\t-0.5) -- (\r+0.25,\t-0.5);
+\draw (\l+1,\b) -- (\l+1,\b-0.3);
+\draw (\r-1,\b) -- (\r-1,\b-0.3);
+\draw (\l,\t) rectangle (\r,\b);
+\draw (6,\b-0.3) -- (5,\b-0.3) node [pos=1.2] {...};
+\draw (4.6,\b-0.3) -- (4.2,\b-0.3);
+\draw (4.2,\b-0.3) -- (4.2,\t-0.5);
+
+\def\t{-0.5};
+\def\b{\t-2.5};
+\def\l{5};
+\def\r{\l+4}:
+\draw (\l+1,\t+0.5) node (an) {$a_1$};
+\draw (\r-1,\t+0.5) node (bn) {$b_1$};
+\draw (\r+0.5,\t-0.5) node (cn) {$c_0$};
+\draw (\l+1,\b-0.5) node (sn) {$c_1$};
+\draw (\r-1,\b-0.5) node (sn) {$s_1$};
+\draw (\l+2,\t-1.25) node (FAn) {FA};
+
+\draw (\l+1,\t) -- (\l+1,\t+0.3);
+\draw (\r-1,\t) -- (\r-1,\t+0.3);
+\draw (\r,\t-0.5) -- (\r+0.25,\t-0.5);
+\draw (\l+1,\b) -- (\l+1,\b-0.3);
+\draw (\r-1,\b) -- (\r-1,\b-0.3);
+\draw (\l,\t) rectangle (\r,\b);
+
+\def\t{-0.5};
+\def\b{\t-2.5};
+\def\l{0};
+\def\r{\l+4}:
+\draw (\l+1,\t+0.5) node (an) {$a_{n-1}$};
+\draw (\r-1,\t+0.5) node (bn) {$b_{n-1}$};
+\draw (\r+0.5,\t-0.5) node (cn) {$c_n$};
+\draw (\l+1,\b-0.5) node (sn) {$s_n$};
+\draw (\r-1,\b-0.5) node (sn) {$s_{n-1}$};
+\draw (\l+2,\t-1.25) node (FAn) {FA};
+
+\draw (\l+1,\t) -- (\l+1,\t+0.3);
+\draw (\r-1,\t) -- (\r-1,\t+0.3);
+\draw (\r,\t-0.5) -- (\r+0.2,\t-0.5);
+\draw (\l+1,\b) -- (\l+1,\b-0.3);
+\draw (\r-1,\b) -- (\r-1,\b-0.3);
+\draw (\l,\t) rectangle (\r,\b);
+\end{tikzpicture}
+\subsection{Full Adder (FA)}
+\begin{tikzpicture}
+\def\t{0};
+\def\l{0};
+\def\w{4};
+\def\h{3};
+\draw (\l,\t) rectangle (\l+\w,\t-\h)
+      (\l+\w/2,\t-\h/2) node {HA}
+	  (\l+1,\t+0.5) node {a}
+      (\l+1,\t+0.3) -- (\l+1,\t)
+      (\l+\w-1,\t+0.3) -- (\l+\w-1,\t)      
+      (\l+\w-1,\t+0.5) node {b};
+
+\def\t{-3.5};
+\def\l{2};
+\def\w{4};
+\def\h{3};
+\draw (\l,\t) rectangle (\l+\w,\t-\h)	
+	  (\l+\w/2,\t-\h/2) node {HA}
+	  (\l+1,\t) -- (\l+1,-3)
+	  (\l+\w-1,\t+0.5) node {c}
+	  (\l+\w-1,\t+0.3) -- (\l+\w-1,\t)
+	  (1,\t-6) node [or port, rotate=270] (or) {}
+	  (or.in 1) -- ++(1.6,0) -- ++(0,1.6)
+	  (or.in 2) -- ++(0,5.1)
+	  (or.out) ++ (0.25,-0.2) node [left] {c};	  
+\def\l{8};
+\draw (\l,-2) node (a1) [and port, rotate=270]   {}
+      (\l+2,-2) node (x1) [xor port, rotate=270] {}
+      (\l+1,-4) node (a2) [and port, rotate=270] {}
+      (\l+3,-4) node (x2) [xor port, rotate=270] {}
+      (x1.out) -- ++(-0.7,0) --(a2.in 1)
+      (x1.out) -- ++(1.3, 0) --(x2.in 1)
+      (\l+3.5,-1) node (c) {$c_{-1}$}
+      (c.south) -- ++(0,-1.2) -- ++(-0.8,0) node [fill=black, circle] {} -- (x2.in 2)
+      (c.south) -- ++(0,-1.2) -- ++(-2.78,0) -- (a2.in 2)
+	  (\l+0.28,-6) node (o1) [or port, rotate=270] {}
+	  (a2.out) -- ++(-0.42,0) -- (o1.in 1)
+	  (a1.out) -- (o1.in 2)
+	  (a1.in 2) -- ++(0,1) ++ (0,0.2) node {$a_0$}
+ 	  (a1.in 2) ++ (0,0.5) node [circle, fill=black] {} -- ++(2,0) -- ++(0,-0.5)
+ 	  (a1.in 1) -- ++(0,1) ++ (0,0.2) node {$b_0$}
+ 	  (a1.in 1) ++ (0,0.25) node [circle, fill=black] {} -- ++(2,0) -- ++(0,-0.5) 
+ 	  (x2.out) -- ++(0,-2) ++ (0,-0.3) node {$s_0$} ++ (-2.75,0) node {$c_0$};
+
+\end{tikzpicture}
+\end{document} 

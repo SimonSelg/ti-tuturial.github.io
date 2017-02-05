@@ -1,0 +1,394 @@
+\documentclass{scrartcl}
+\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+
+% zusätzliche mathematische Symbole, AMS=American Mathematical Society 
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{pgf,tikz}
+%\usetikzlibrary{positioning,shapes,arrows,decorations.pathreplacing,backgrounds,snakes}
+
+% fürs Einbinden von Graphiken
+\usepackage{graphicx}
+
+% für Namen etc. in Kopf- oder Fußzeile
+\usepackage{fancyhdr}
+
+% erlaubt benutzerdefinierte Kopfzeilen 
+\pagestyle{fancy}
+
+
+% für COde
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mylightgray}{rgb}{0.98,0.98,0.98}
+\definecolor{mydarkgreen}{rgb}{0.0,0.5,0.0}
+\definecolor{mymagenta}{rgb}{0.5,0.0,0.5}
+\definecolor{mybrown}{rgb}{0.9,0.5,0.2}
+
+\lstset{ %
+  backgroundcolor=\color{mylightgray},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{red},        % comment style
+  deletekeywords={},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Python,                 % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  %numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mydarkgreen},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname,                   % show the filename of files included with \lstinputlisting; also try caption instead of title 
+   classoffset=1,
+   morekeywords={def},keywordstyle=\color{red},
+   classoffset=2,
+   morekeywords={print,True,False},keywordstyle=\color{mymagenta},
+   classoffset=3,
+   emph={return,yield},
+   emphstyle=\color{mybrown},
+   classoffset=0
+   }
+
+
+%emph1={def},
+%emph1style=\color{blue}\textbf,
+%emph2={yield,return},          % Custom highlighting
+%emph2style=\color{red},
+%emph3={print,True,False},          % Custom highlighting
+%emph3style=\color{mymagenta},
+%} 
+
+
+
+
+
+
+\usepackage{array}
+\usepackage{pgf,tikz}
+\usepackage{ amssymb }
+% \usetikzlibrary{arrows,automata}
+% Definition der Kopfzeile
+\lhead{
+Lösung zur Klausur \#1982
+}
+\chead{}
+\rhead{\today{}}
+\lfoot{}
+\cfoot{Seite \thepage}
+\rfoot{} 
+
+\begin{document}
+
+\section*{Lösung zur Klausur \#1982}
+
+Es wird keine Garantie für die Richtigkeit gegeben.
+Diese Lösung ist von Studenten angefertigt.
+\subsection*{Aufgabe 1}
+\subsubsection*{a)}
+\begin{lstlisting}
+>>> 'I %s %sam' % ('spam'[2:], 'spam'[:2])
+'I am spam'
+\end{lstlisting}
+
+\subsubsection*{b)}
+\begin{lstlisting}
+>>> a=((i, j) for i in range(1, 4) for j in range(1, 7, 2)
+...           if i**2 < j*i)
+>>> tuple(a)
+((1, 3), (1, 5), (2, 3), (2, 5), (3, 5))
+\end{lstlisting}
+
+\subsubsection*{c)}
+\begin{lstlisting}
+>>> import re
+>>> re.findall(r'([a-z]+?)\w*', "Ham, spam, and, eggs")
+['a', 's', 'a', 'e']
+\end{lstlisting}
+
+\subsubsection*{d)}
+\begin{lstlisting}
+>>> from operator import itemgetter
+>>> a = [3, 2, 1]
+>>> b = ("a", "C", "b")
+>>> sorted(zip(a, b), key=itemgetter(1), reverse=True)
+[(1, 'b'), (3, 'a'), (2, 'C')]
+\end{lstlisting}
+
+\subsubsection*{e)}
+\begin{lstlisting}
+>>> a, b = (3, 2, 1, 0), (2, 1 , 3, 4, 5)
+>>> list(map(max, a, b))
+[3, 2, 3, 4]
+\end{lstlisting}
+
+\subsubsection*{f)}
+\begin{lstlisting}
+>>> f = lambda y: lambda x: int(x - y/2)
+>>> f(-56)(14)
+42
+\end{lstlisting}
+
+\subsection*{Aufgabe 2}
+\subsubsection*{a)}
+\begin{itemize}
+\item statische Finitheit
+\item dynamische Finitheit
+\item Effektivität
+\item Präzise
+\item Terminiert
+\end{itemize}
+
+\subsubsection*{b)}
+imperative Programmierung: Man beschreibt,
+ wie
+ etwas
+erreicht werden soll
+
+deklarative Programmierung: Man beschreibt,
+ was
+erreicht werden soll.
+
+\subsubsection*{c)}
+\begin{tabular}{c|c}
+Imperativ & Deklarativ \\
+\hline
+prozedurale Programierung & funktionale Programmierung\\
+OOP & 
+\end{tabular}
+
+\subsubsection*{d)}
+
+\begin{itemize}
+ \item 1936 Turing-Maschine
+ \item 1941 Erfindung des Z3
+ \item 1948 Erster Speicherprogrammierbarer Computer
+ \item 1971 Erster Mikroprozessor
+ \item 1989 Beginn der Entwicklung des WWW
+\end{itemize}
+
+\subsection*{Aufgabe 3}
+\subsubsection*{a)}
+\begin{lstlisting}
+def sieve(n):
+    siv=set(range(2,n+1))
+    for i in range(2, n+1):
+        if i in siv:
+            for x in range(i**2, n+1):
+                if x % i == 0:
+                    siv.discard(x)
+    return siv
+
+sieve(20)
+\end{lstlisting}
+
+\subsubsection*{b)}
+\begin{lstlisting}
+def isprime(n):
+    if n == 0 or n==1:
+        return False
+    if n in sieve(n):
+        return True
+    else:
+        return False
+
+isprime(20)
+\end{lstlisting}
+
+\subsection*{Aufgabe 4}
+\subsubsection*{a)}
+\begin{lstlisting}
+def reachable(sender, receiver, confidants):
+    marked = dict((x, False) for x in confidants)
+    marked[sender] = True
+    L = [sender]
+    while L:
+        print(marked, "\n" , L, "\n")
+        cur = L.pop()
+        if cur == receiver:
+            return True
+        for f in confidants[cur]:
+            if not marked[f]:
+                marked[f] = True
+                L.append(f)
+    return False
+
+cnfd = {1: [2, 3], 2: [5, 4], 3: [3], 4: [6, 3], 5: [6], 6:[5]}
+reachable(1, 6, cnfd)
+\end{lstlisting}
+Ausgabe:
+\begin{lstlisting}
+{1: True, 2: False, 3: False, 4: False, 5: False, 6: False} 
+ [1] 
+
+{1: True, 2: True, 3: True, 4: False, 5: False, 6: False} 
+ [2, 3] 
+
+{1: True, 2: True, 3: True, 4: False, 5: False, 6: False} 
+ [2] 
+
+{1: True, 2: True, 3: True, 4: True, 5: True, 6: False} 
+ [5, 4] 
+
+{1: True, 2: True, 3: True, 4: True, 5: True, 6: True} 
+ [5, 6] 
+\end{lstlisting}
+
+\verb_True_
+
+\subsubsection*{b)}
+\(O(n^2)\)
+
+\subsection*{Aufgabe 5}
+\subsubsection*{a)}
+\begin{lstlisting}
+def fractions():
+    zaehler, nenner, direction = 1, 1, "up"
+    while True:
+   		yield zaehler, nenner
+        if zaehler == 1:
+            if direction == "up":
+                nenner += 1
+                direction = "down"
+            else:
+                zaehler += 1
+                nenner -= 1
+        elif nenner == 1:
+            if direction == "down":
+                zaehler += 1
+                direction = "up"
+            else:
+                zaehler -= 1
+                nenner += 1
+        elif direction == "up":
+            zaehler -= 1
+            nenner += 1
+        else:
+            zaehler += 1
+            nenner -= 1
+\end{lstlisting}
+
+\subsubsection*{b)}
+
+\begin{lstlisting}
+def print_fractions(n):
+    f = fractions()
+    for i in range(n):
+        print(next(f))
+\end{lstlisting}
+
+\subsection*{Aufgabe 6}
+
+\begin{lstlisting}
+user = 'Alice'
+def decorator(f):
+    user = 'Bob'
+    def wrapper(*args, **kwargs):
+        global user
+        res = '%s %s' % (user, f(*args, **kwargs))
+        return res
+    return wrapper
+
+@decorator
+def func1(str):
+    return '%s im Hoersaal.' % str
+
+def func2(str):
+    return '%s %s ein Buch.' % (user, str)
+
+print(func1('schreibt'))
+print(func2('liest'))
+\end{lstlisting}    
+
+\subsubsection*{a)}
+
+\begin{verbatim}
+Bob schreibt im Hoersaal.
+Alice liest ein Buch.
+\end{verbatim}
+
+\subsubsection*{b)}
+
+\begin{verbatim}
+Alice schreibt im Hoersaal.
+Alice liest ein Buch.
+\end{verbatim}
+
+\subsection*{Aufgabe 7}
+
+\subsubsection*{a)}
+
+\begin{lstlisting}[escapechar=@]
+class Marmelade:
+    step = 5
+    def __init__(@\colorbox{yellow}{self,}@ start, limit):
+        self.run = start
+        self.limit = limit
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.run += @\colorbox{yellow}{self.}@step
+        if self.run > self.limit:
+            raise StopIteration
+        return @\colorbox{yellow}{self.}@run
+
+jam = Marmelade(32, 45)
+for i in jam:
+    print(i, end=', ')
+
+for i in jam:
+    print(2*i, end=', ')
+
+print("Empty!")
+
+\end{lstlisting}
+
+\subsubsection*{b)}
+
+\begin{verbatim}
+37, 42, Empty
+\end{verbatim}
+
+\subsubsection*{c)}
+
+Iteratorprotokoll
+
+\subsection*{Aufgabe 8}
+
+\subsubsection*{a)}
+\verb_afunc_
+\[ \prod _{i=k} ^n f(i)\]
+
+\verb_bfunc_
+\[ \prod _{i=1} ^n 2 \cdot n\]
+
+\subsubsection*{b)}
+
+\begin{lstlisting}[escapechar=@]
+def cfunc(f, k, n):
+    if @\colorbox{yellow}{k=n+1}@:
+        return 1
+    else:
+        return @\colorbox{yellow}{f(n)}@*cfunc@\colorbox{yellow}{f,k,n-1}@
+\end{lstlisting}
+
+\end{document}
