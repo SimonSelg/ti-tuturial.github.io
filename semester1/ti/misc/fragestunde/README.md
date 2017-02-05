@@ -1,1 +1,0 @@
-Fotos von Fragestunde
