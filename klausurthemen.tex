@@ -1,0 +1,159 @@
+\documentclass{scrartcl}[9pt, a4paper]
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+% Citations
+\usepackage[numbers, sort]{natbib}
+\usepackage[colorlinks, citecolor=blü, linkcolor=black, urlcolor=green, bookmarks=false, hypertexnames=trü]{hyperref}
+
+% (Computer\item)science
+\usepackage[ruled, vlined, linesnumbered]{algorithm2e}
+\usepackage{amssymb, amsmath}
+
+% Formatting
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyhdr}
+
+\setlength\parindent{0cm}
+\setlength\parskip{0.3cm}
+
+\pagestyle{fancy}
+\lhead{
+\begin{tabular}{ll}
+\end{tabular}
+}
+\chead{Klausur Themen}
+\rhead{TI-Tutorat}
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+
+% ==============================================================================
+% ==============================================================================
+\begin{document}
+
+%_______________________________________________________________________________
+\section*{Kodierung}
+
+\begin{itemize}
+	\item Komplement Beweise
+	\item Zahlendarstellung
+	      \begin{itemize}
+	      	\item Betragvorzeichen
+	      	\item Einer Komplement
+	      	\item Zweier komplement
+	      	\item Basen
+	      	\item Umwandlung
+	      \end{itemize}
+	\item Parity Code
+	\item Hamming Code
+	      \begin{itemize}
+	      	\item Distanz
+	      	\item Erkennen, korrigieren
+	      \end{itemize}
+	\item Huffman Code
+\end{itemize}
+
+%_______________________________________________________________________________
+\section*{Timing}
+
+\begin{itemize}
+	\item Timingdiagramme
+	\item Spikefreies Umschalten / Pulsweite
+	\item Kontrollogik RETI
+\end{itemize}
+
+%_______________________________________________________________________________
+\section*{Verifikation}
+
+\begin{itemize}
+	\item KDNF/DNF/KNF
+	\item BDDS
+	      \begin{itemize}
+	      	\item Umwandlung BDDs \item Schaltkreise
+	      	\item Reduzierung
+	      	\item Ordnung
+	      \end{itemize}
+\end{itemize}
+
+%_______________________________________________________________________________
+\pagebreak
+\section*{Kombinatorische Logik}
+
+\begin{itemize}
+	\item Boolsche Algebra Beweise (Axiome)
+	\item RS/SR/DLATCH Flipflop
+	\item Arithmetische Schaltun
+	\item Konstruktion
+	      \begin{itemize}
+	      	\item CRA
+	      	\item CSA
+	      	\item Multiplizierer
+	      \end{itemize}
+	\item PLAs
+	\item Schaltkreise
+
+	      \begin{itemize}
+	      	\item Kosten/Tiefe bestimmen
+	      	\item zeichnen und formalisieren
+	      	\item Topologische Sortierung
+	      	\item Symbolische Simulation
+	      \end{itemize}
+
+	\item KDNF/DNF/KNF
+	\item Hypercubes
+	\item McCluskey
+	\item Minimalpolynom Beweis
+	\item Primimplikanten Tafel
+	      \begin{itemize}
+	      	\item Petrick
+	      \end{itemize}
+\end{itemize}
+
+%_______________________________________________________________________________
+\pagebreak
+\section*{Sequentielle Logik}
+
+\begin{itemize}
+	\item RETI Kontrollogik / Signale
+	\item RETI Datenpfade
+	      \begin{itemize}
+	      	\item Realisierbarkeit von Befehlen
+	      	\item Pfade für Befehl X
+	      \end{itemize}
+	\item Mealy und Mooreautomaten
+	      \begin{itemize}
+	      	\item Zeichnen
+	      	\item Synthetisieren
+	      \end{itemize}
+	\item Sequentielle Synthese
+	      \begin{itemize}
+	      	\item Zustandskodierung
+	      \end{itemize}
+\end{itemize}
+
+%_______________________________________________________________________________
+\section*{RETI Assembler}
+
+\begin{itemize}
+	\item RETI Programm kommentieren/verstehen
+	\item RETI Programm schreiben (unwarschl.)
+\end{itemize}
+
+%_______________________________________________________________________________
+\section*{Sonstiges}
+
+\begin{itemize}
+	\item Timing in RETI (Datenpfade, ALU)
+	\item Pipelining
+	\item Caching
+	      \begin{itemize}
+	      	\item Direct Map
+	      	\item Verdrängungsstrategien
+	      \end{itemize}
+	\item ...
+\end{itemize}
+
+\end{document}
