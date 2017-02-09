@@ -71,6 +71,32 @@ Berechnung der Zeiten für logische Werte:
 	t_{min} & := t_f^{max} + 2 \cdot \delta \\
 \end{align*}
 
+\subsection*{Lösung b)}
+
+Berechnung für ein Gatter bezüglich $M$ und $t_0$:
+
+\begin{align*}
+	t_p & := t_0 + [0.2, 0.12]                       \\
+	t_t & := t_p + [0.02, 0.12] = t_0 + [0.04, 0.24] \\
+	t_r & := t_p + [0.02, 0.12] = t_0 + [0.04, 0.24] \\
+	t_s & := t_t + [0.02, 0.14] = t_0 + [0.06, 0.36]
+\end{align*}
+
+Berechnung für 4 Eingangs EXOR bezüglich $M$ und $t_0$:
+
+\begin{align*}
+	t_u & := t_s                                     \\
+	t_v & := t_s                                     \\
+	t_f & := t_u + [0.06, 0.36] = t_0 + [0.12, 0.72] \\
+\end{align*}
+
+Berechnung der Zeiten für logische Werte:
+
+\begin{align*}
+	t_{min} & := t_f^{min} + \delta         \\
+	t_{min} & := t_f^{max} + 2 \cdot \delta \\
+\end{align*}
+
 
 % ______________________________________________________________________________
 \section*{Lösung: Aufgabe 2}
